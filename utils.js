@@ -1,5 +1,10 @@
 ///<reference path="jquery.d.ts" />
 ///<reference path="angular.d.ts" />
+var EnglishRegxp = /^[A-Za-z0-9]*$/;
+
+function dupObj(obj) {
+	return JSON.parse(JSON.stringify(obj));;
+}
 
 function dump(obj) {
     var out = '';
