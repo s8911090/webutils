@@ -47,9 +47,9 @@ function getDecentTime( date ,  splitor) {
 }
 
 var decodeHtmlEntity = function(str) {
-	  return str.replace(/&#(\d+);/g, function(match, dec) {
-	    return String.fromCharCode(dec);
-	  });
+	var elm = document.createElement('textarea');
+	elm.innerHTML = str;
+	return elm.value;
 };
 
 var encodeHtmlEntity = function(str) {
