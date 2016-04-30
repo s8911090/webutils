@@ -1,6 +1,7 @@
-///<reference path="jquery.d.ts" />
-///<reference path="angular.d.ts" />
+
 var EnglishRegxp = /^[A-Za-z0-9]*$/;
+var Now = new Date();
+var MillisPerDay = 24*60*60*1000;
 
 function dupObj(obj) {
 	return JSON.parse(JSON.stringify(obj));;
@@ -21,9 +22,22 @@ function dump(obj) {
     pre.innerHTML = out;
     document.body.appendChild(pre);
 }
+
+function isDateNearInDays( nearInDays, baseDate, compareToDate){
+	if (typeof(nearInDays)==='undefined'){
+		return false;
+	}
+	if (typeof(baseDate)==='undefined'){
+		return false;
+	}
+	if (typeof(compareToDate)==='undefined'){
+		compareToDate = Now;
+	}
+	return Math.abs(compareToDate - baseDate) <= nearInDays * MillisPerDay;
+}
+
 function getDefaultDate() {
-    var now = new Date();
-    return getDecentDate( now , "/");
+    return getDecentDate( Now , "/");
 }
 
 function getDecentDate( date ,  splitor) {
